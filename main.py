@@ -85,10 +85,9 @@ def add_to_spotify(songs, artists, unadded_songs):
         matched_index = find_match(songs[i], artists[i], limit, json_response)
 
         # Failed to find song on Spotify. Print name if required
-        if matched_index == -1:
+        if matched_index == -1 and print_unadded_songs == 1:
             unadded_songs.append(songs[i])
-        elif  print_unadded_songs == 1:
-            unadded_songs.append(songs[i])
+        elif matched_index == -1 and print_unadded_songs == 0:
             continue
         # Found song on Spotify. Add to playlist
         else:
